@@ -1,4 +1,5 @@
 import Discord from 'discord.js';
+import Bot from './bot/bot';
 
 import * as dotenv from 'dotenv';
 
@@ -13,9 +14,6 @@ const client = new Discord.Client();
 
 const { BOT_USER_TOKEN } = process.env;
 
-const searchLiveleak = (terms) => {
-    console.log(terms)
-}
 
 client.on('ready', (err) => {
     if (!err) {
@@ -29,13 +27,7 @@ client.on('message', message => {
     const messageArr = message.content.split(" ")
     const command = parseArgs(messageArr)._;
     const options = parseArgs(messageArr);
-    console.log(options)
-    switch (command[0]) {
-        case 'salvio':
-            return message.reply('WHAT!!?!');
-        default:
-            return message.reply("The Amazing Salvio didnt understand you! Blessings!");
-    }
+    Bot.respond(command[0], message, options);
 });
 
 client.login(BOT_USER_TOKEN)

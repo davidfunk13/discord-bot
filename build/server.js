@@ -2,6 +2,8 @@
 
 var _discord = _interopRequireDefault(require("discord.js"));
 
+var _bot = require("./bot");
+
 var dotenv = _interopRequireWildcard(require("dotenv"));
 
 var Cheerio = _interopRequireWildcard(require("cheerio"));
@@ -17,11 +19,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 dotenv.config();
 var client = new _discord["default"].Client();
 var BOT_USER_TOKEN = process.env.BOT_USER_TOKEN;
-
-var searchLiveleak = function searchLiveleak(terms) {
-  console.log(terms);
-};
-
 client.on('ready', function (err) {
   if (!err) {
     console.log("Hello, ".concat(client.user.tag));
@@ -36,14 +33,6 @@ client.on('message', function (message) {
   var command = (0, _minimist["default"])(messageArr)._;
 
   var options = (0, _minimist["default"])(messageArr);
-  console.log(command, options);
-
-  switch (command[0]) {
-    case 'salvio':
-      return message.reply('WHAT!!?!');
-
-    default:
-      return message.reply("The Amazing Salvio didnt understand you! Blessings!");
-  }
+  (0, _bot.parseCommands)(command[0], message, options);
 });
 client.login(BOT_USER_TOKEN).then(console.log('Login Successfull.'))["catch"](console.err);
