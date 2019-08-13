@@ -10,10 +10,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 dotenv.config();
 var client = new _discord["default"].Client();
-var CLIENT_ID = process.env.CLIENT_ID;
+var BOT_USER_TOKEN = process.env.BOT_USER_TOKEN;
 client.on('ready', function (err) {
   if (!err) {
-    console.log("Logged in as ".concat(client.user.tag));
+    console.log("Hello, ".concat(client.user.tag));
     return;
   }
 
@@ -24,4 +24,4 @@ client.on('message', function (msg) {
     msg.reply('pong.');
   }
 });
-client.login();
+client.login(BOT_USER_TOKEN).then(console.log('Login Successfull.'))["catch"](console.err);

@@ -6,7 +6,7 @@ dotenv.config()
 
 const client = new Discord.Client();
 
-const { TOKEN } = process.env;
+const { BOT_USER_TOKEN } = process.env;
 
 client.on('ready', (err) => {
     if (!err) {
@@ -22,6 +22,6 @@ client.on('message', msg => {
     }
 });
 
-client.login(TOKEN)
+client.login(BOT_USER_TOKEN)
     .then(console.log('Login Successfull.'))
     .catch(console.err);
