@@ -1,14 +1,10 @@
 "use strict";
 
-var _axios = require("axios");
-
-var _bot = _interopRequireDefault(require("./bot/bot"));
-
-var Cheerio = _interopRequireWildcard(require("cheerio"));
-
 var _discord = _interopRequireDefault(require("discord.js"));
 
 var dotenv = _interopRequireWildcard(require("dotenv"));
+
+var _parse = _interopRequireDefault(require("./bot/parse"));
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj["default"] = obj; return newObj; } }
 
@@ -37,9 +33,9 @@ client.on('message', function (message) {
 
   if (message.author == client.user) {
     return;
-  }
+  } //if Salvio isnt called, or if another bot is attempting to contact The Amazing Salvio
 
-  console.log(commandArr[0]);
+
   if (commandArr[0].toLowerCase() !== prefix || message.author.bot) return;
-  message.reply(message.author.id); // Bot.respond(command[0], message, options);
+  (0, _parse["default"])(commandArr, message); // Bot.respond(command[0], message, options);
 });

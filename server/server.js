@@ -1,8 +1,7 @@
-import { axios } from 'axios';
-import * as Cheerio from 'cheerio';
 import Discord from 'discord.js';
 import * as dotenv from 'dotenv';
 import parseInput from './bot/parse';
+
 dotenv.config()
 
 const client = new Discord.Client();
@@ -37,7 +36,7 @@ client.on('message', message => {
     //if Salvio isnt called, or if another bot is attempting to contact The Amazing Salvio
     if (commandArr[0].toLowerCase() !== prefix || message.author.bot) return
     
-    parseInput(commandArr);
-    
+    parseInput(commandArr, message);
+
     // Bot.respond(command[0], message, options);
 });
