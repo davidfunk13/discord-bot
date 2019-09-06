@@ -1,1 +1,1 @@
-export const H3_SELECTOR = 'body > main > section.content_main_outer > div > div > div > div.col-sm-12.col-md-8.col-xs-12.pad_none.content_inner_page_left_outer > div.col-xs-12.pad_none.featured_item_main_outer > div:nth-child(2) > div > h3'; 
+export const ITEM_DIV = 'body > main > section.content_main_outer > div > div > div > div.col-sm-12.col-md-8.col-xs-12.pad_none.content_inner_page_left_outer > div.col-xs-12.pad_none.featured_item_main_outer > div.col-xs-12.pad_none.featured_items_outer'; 
